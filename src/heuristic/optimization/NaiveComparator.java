@@ -20,7 +20,7 @@ public class NaiveComparator implements HeuristicComparator{
             dominated = false;
             for (int j = 0; j < input.size(); ++j) {
                 if (j == i) continue;
-                if (dominate(input.get(j), input.get(i)) == true) {
+                if (input.get(j).dominates(input.get(i))) {
                     dominated = true;
                     break;
                 }

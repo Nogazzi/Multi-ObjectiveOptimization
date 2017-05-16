@@ -24,6 +24,13 @@ public class Individual implements Comparable<Individual> {
         this.characteristics = characteristics;
     }
 
+    public Individual(final int size, final double x1, final double x2){
+        this.size = size;
+        this.characteristics = new double[size];
+        this.characteristics[0] = x1;
+        this.characteristics[1] = x2;
+    }
+
     public int getSize(){
         return this.size;
     }
@@ -35,19 +42,12 @@ public class Individual implements Comparable<Individual> {
         if( o1.getSize() != getSize() ){
 
         }
-        int result = 0;
         for( int i = 0 ; i < o1.getSize() ; ++i) {
-            double indexResult = getCharacteristic(i) - o1.getCharacteristic(i);
-            if( indexResult < 0 ){
-                result--;
-            }else if( indexResult > 0 ){
-                result++;
+            if( getCharacteristic(i) < o1.getCharacteristic(i)){
+                return false;
             }
         }
-        if(result > 1 ){
-            return true;
-        }
-        return false;
+        return true;
     }
 
     public boolean dominatedByAnyFrom(List<Individual> population){
