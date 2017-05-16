@@ -33,9 +33,9 @@ public class KungComparator implements HeuristicComparator {
             List<Individual> topPopulation;
             List<Individual> bottomPopulation;
 
-            topPopulation = front(p.subList(0, (int) floor(p.size() / 2.0)));
+            topPopulation = front(p.subList(0, (int) floor(p.size() / 2.0)-1));
 
-            bottomPopulation = front(p.subList((int) floor(p.size() / 2.0) + 1, p.size() - 1));
+            bottomPopulation = front(p.subList((int) floor(p.size() / 2.0) , p.size() - 1));
 
             result.addAll(topPopulation);
 

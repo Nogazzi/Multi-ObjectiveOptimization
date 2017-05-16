@@ -74,4 +74,24 @@ public class Individual implements Comparable<Individual> {
     public String toString() {
         return String.valueOf(getCharacteristic(0));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Individual o1 = (Individual)obj;
+        if( this.getSize() != o1.getSize() ){
+            return false;
+        }
+        for( int i = 0 ; i < getSize() ; ++i ){
+            if( getCharacteristic(i) != o1.getCharacteristic(i)){
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
