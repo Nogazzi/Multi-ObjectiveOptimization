@@ -57,7 +57,6 @@ public class Individual implements Comparable<Individual> {
         return false;
     }
 
-
     @Override
     public int compareTo(Individual o) {
         double difference = o.getCharacteristic(0) - getCharacteristic(0);
@@ -87,7 +86,6 @@ public class Individual implements Comparable<Individual> {
             }
         }
         return true;
-
     }
 
     @Override
