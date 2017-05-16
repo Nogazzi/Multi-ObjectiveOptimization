@@ -1,8 +1,6 @@
 package heuristic.optimization;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Nogaz on 15.05.2017.
@@ -16,7 +14,9 @@ public class Individual implements Comparable<Individual> {
         this.size = size;
         this.characteristics = new double[size];
         for( int i = 0 ; i < size ; ++i ){
-            characteristics[i] = new Random().nextDouble();
+            double newDouble = new Random().nextDouble();
+
+            characteristics[i] = newDouble;
         }
     }
     public Individual(final double[] characteristics, final int size){
@@ -63,14 +63,32 @@ public class Individual implements Comparable<Individual> {
 
     @Override
     public int compareTo(Individual o) {
-        double difference = o.getCharacteristic(0) - getCharacteristic(0);
-        if( difference < 0 ){
-            return -1;
-        }else if( difference > 0){
+
+        /*
+        if( o.getCharacteristic(0) > getCharacteristic(0) ){
             return 1;
+        }else if( o.getCharacteristic(0) < getCharacteristic(0)){
+            return -1;
         }else{
-            return 0;
+            if( o.getCharacteristic(1) > getCharacteristic(1) ){
+                return 1;
+            }else if( o.getCharacteristic(1) < getCharacteristic(1)){
+                return -1;
+            }else{
+                return 0;
+            }
+        }*/
+        int dif = Double.compare(o.getCharacteristic(0), getCharacteristic(0));
+        if( dif == 0 ){
+            return Double.compare(o.getCharacteristic(1), getCharacteristic(1));
         }
+        return dif;
+
+        /*double difference = o.getCharacteristic(0) - getCharacteristic(0);
+        if( difference == 0 ){
+            return (int) (o.getCharacteristic(1) - getCharacteristic(1))*10;
+        }
+        return (int) difference*10;*/
     }
 
     @Override
@@ -98,6 +116,14 @@ public class Individual implements Comparable<Individual> {
             }
         }
         return true;
+    }
+
+    public String printIndividual(){
+        String result = "";
+        for(int i = 0 ; i < size ; ++i ){
+            result += characteristics[i] + "\t";
+        }
+        return result;
     }
 
     @Override
