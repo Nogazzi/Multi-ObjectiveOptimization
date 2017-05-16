@@ -43,7 +43,7 @@ public class Individual implements Comparable<Individual> {
 
         }
         for( int i = 0 ; i < o1.getSize() ; ++i) {
-            if( getCharacteristic(i) < o1.getCharacteristic(i)){
+            if( this.getCharacteristic(i) < o1.getCharacteristic(i)){
                 return false;
             }
         }
@@ -71,7 +71,15 @@ public class Individual implements Comparable<Individual> {
 
     @Override
     public String toString() {
-        return String.valueOf(getCharacteristic(0));
+        String desc = "[";
+        for (int i = 0 ; i < size ; ++i ){
+            desc += this.characteristics[i];
+            if( i != size-1 ){
+                desc += ";";
+            }
+        }
+        desc += "]";
+        return desc;
     }
 
     @Override

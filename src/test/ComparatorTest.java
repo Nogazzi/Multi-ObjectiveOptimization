@@ -20,9 +20,9 @@ public class ComparatorTest {
 
         List<Individual> input = new ArrayList<>();
         input.add(new Individual(2, 2.1, 2.2));
+        input.add(new Individual(2, 0.1, 0.7));
+        input.add(new Individual(2, 0.6, 0.5));
         input.add(new Individual(2, 0.1, 0.2));
-        input.add(new Individual(2, 0.3, 0.5));
-        input.add(new Individual(2, 0.5, 0.2));
 
         HeuristicComparator kung = new KungComparator();
         HeuristicComparator naive = new NaiveComparator();
