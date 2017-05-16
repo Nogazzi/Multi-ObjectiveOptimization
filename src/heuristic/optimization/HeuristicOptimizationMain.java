@@ -18,6 +18,8 @@ public class HeuristicOptimizationMain {
             individuals.add(new Individual(individualsSize));
             i++;
         }
+        Collections.sort(individuals);
+        individuals = individuals.stream().distinct().collect(Collectors.toList());
         HeuristicComparator naiveComparator = new NaiveComparator();
         List<Individual> naiveIdentifiedSet = naiveComparator.identifyDominatedSet(individuals);
 

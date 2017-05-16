@@ -42,13 +42,17 @@ public class Individual implements Comparable<Individual> {
         if( o1.getSize() != getSize() ){
 
         }
+        boolean dominates = false;
         for( int i = 0 ; i < o1.getSize() ; ++i) {
             if( this.getCharacteristic(i) < o1.getCharacteristic(i)){
                 return false;
+            }else if( this.getCharacteristic(i) > o1.getCharacteristic(i) ){
+                dominates = true;
             }
         }
-        return true;
+        return dominates;
     }
+
 
     public boolean dominatedByAnyFrom(List<Individual> population){
         for (int i = 0 ;i < population.size() ; ++i){

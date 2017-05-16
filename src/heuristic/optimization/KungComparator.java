@@ -20,9 +20,6 @@ public class KungComparator implements HeuristicComparator {
         Collections.sort(sortedInput);
 
         return front(sortedInput);
-
-
-
     }
 
     public List<Individual> front(List<Individual> p){
@@ -38,6 +35,12 @@ public class KungComparator implements HeuristicComparator {
             bottomPopulation = front(p.subList((int) floor(p.size() / 2.0) , p.size() - 1));
 
             result.addAll(topPopulation);
+
+            /*for( int i = 0 ; i < bottomPopulation.size() ; ++i ){
+                if( !bottomPopulation.get(i).dominatedByAnyFrom(topPopulation) ){
+                    result.add(bottomPopulation.get(i));
+                }
+            }*/
 
             for (int i = 0; i < p.size(); ++i) {
                 if (!p.get(i).dominatedByAnyFrom(bottomPopulation)) {
