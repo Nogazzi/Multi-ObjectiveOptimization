@@ -2,13 +2,11 @@ package heuristic.optimization;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Created by Nogaz on 15.05.2017.
  */
-public class NaiveComparator implements HeuristicComparator{
+public class NaiveComparator implements HeuristicComparator {
 
 
     @Override
@@ -19,14 +17,16 @@ public class NaiveComparator implements HeuristicComparator{
         for (int i = 0; i < input.size(); ++i) {
             dominated = false;
             for (int j = 0; j < input.size(); ++j) {
-                if (j == i) continue;
-                if (input.get(j).dominates(input.get(i))) {
-                    dominated = true;
-                    break;
+                //if (j == i) continue;
+                if(j != i) {
+                    if (input.get(j).dominates(input.get(i))) {
+                        dominated = true;
+                        break;
+                    }
+                    //j++;
                 }
-                j++;
             }
-            if( dominated == false ){
+            if (dominated == false) {
                 result.add(input.get(i));
             }
         }
