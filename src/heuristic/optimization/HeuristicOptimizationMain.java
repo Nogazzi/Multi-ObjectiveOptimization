@@ -15,42 +15,17 @@ import java.util.stream.Collectors;
 public class HeuristicOptimizationMain {
     public static void main(String[] args) throws IOException {
 
-        /*List<Individual> readInd = readCsv("C:\\Users\\Nogaz\\IdeaProjects\\Multi-ObjectiveOptimization\\Kung-danetestowe.csv");
-        simulate(readInd);
-        writeToFile(readInd, "base.txt");*/
+        List<Individual> daneTestowe = readCsv("C:\\Users\\Nogaz\\IdeaProjects\\Multi-ObjectiveOptimization\\Kung-danetestowe.csv");
+
         List<Individual> initialIndividuals = new ArrayList<>();
-        //List<List<Individual>> dominanceRankNaive = new ArrayList<>();
-        //List<List<Individual>> dominanceRankKung = new ArrayList<>();
+
         int individualsAmount = 10;
         for(int i = 0 ; i < individualsAmount ; ++i ){
             initialIndividuals.add(new Individual(2));
         }
-        List<Individual> initialIndividualsNaive = new ArrayList<>(initialIndividuals);
-        List<Individual> initialIndividualsKung = new ArrayList<>(initialIndividuals);
+        List<Individual> initialIndividualsNaive = new ArrayList<>(daneTestowe);
+        List<Individual> initialIndividualsKung = new ArrayList<>(daneTestowe);
 
-        /*int counter = 0;
-        while( initialIndividualsKung.size() > 0 ) {
-            dominanceRankKung.add(new ArrayList<Individual>(simulateByKungAlgorithm(initialIndividualsKung)));
-            for( int i = 0 ; i < dominanceRankKung.get(counter).size() ; ++i ){
-                if( initialIndividualsKung.contains(dominanceRankKung.get(counter).get(i))){
-                    dominanceRankKung.get(counter).get(i).setDominanceDepth(counter+1);
-                    initialIndividualsKung.remove(dominanceRankKung.get(counter).get(i));
-                }
-            }
-            counter++;
-        }*/
-
-        /*counter = 0;
-        while( initialIndividualsNaive.size() > 0 ) {
-            dominanceRankNaive.add(new ArrayList<Individual>(simulateByNaiveAlgorithm(initialIndividualsNaive)));
-            for( int i = 0 ; i < dominanceRankNaive.get(counter).size() ; ++i ){
-                if( initialIndividualsNaive.contains(dominanceRankNaive.get(counter).get(i))){
-                    dominanceRankNaive.get(counter).get(i).setDominanceDepth(counter+1);
-                    initialIndividualsNaive.remove(dominanceRankNaive.get(counter).get(i));
-                }
-            }
-            counter++;
-        }*/
         List<Individual> dominanceRankKung = generateDominanceDepthLayersByKung(initialIndividualsKung);
         List<Individual> dominanceRankNaive = generateDominanceDepthLayersByNaive(initialIndividualsNaive);
 
