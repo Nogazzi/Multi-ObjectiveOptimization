@@ -54,9 +54,16 @@ public class HeuristicOptimizationMain {
         List<Individual> dominanceRankKung = generateDominanceDepthLayersByKung(initialIndividualsKung);
         List<Individual> dominanceRankNaive = generateDominanceDepthLayersByNaive(initialIndividualsNaive);
 
+        printSortedByDominanceCount(dominanceRankNaive);
         printSortedByDominanceCount(dominanceRankKung);
+
+        printSortedByDominanceDepth(dominanceRankNaive);
         printSortedByDominanceDepth(dominanceRankKung);
+
+        printSortedByDominanceRank(dominanceRankNaive);
         printSortedByDominanceRank(dominanceRankKung);
+
+
     }
 
     public static void printSortedByDominanceRank(List<Individual> individuals){
